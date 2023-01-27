@@ -1,0 +1,2 @@
+# AnalisePluviometrica_EstadoRJ
+ Repositório destinado ao projeto em apoio ao LACPEX (Laboratório de Previsão de Curtíssimo Prazo e Eventos Extremos) na análise pluviométrica do estado do  Rio de Janeiro. O objetivo era checar se a menor incidência pluviométrica do mês de fevereiro, comparado a março, tinha a ver com a menor quantidade de dias. A resposta chegada ao final do estudo é que não,  não é a quantidade de dias que influencia na menor capacidade pluviométrica de Fevereiro comparado  Março.
