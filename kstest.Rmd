@@ -1,0 +1,30 @@
+```{r}
+#Backup
+teste <- read.csv2(file="D:\\Estudo\\Oficina de Pesquisa\\teste\\urca_FinalN.csv", sep=',')
+teste
+```
+
+```{r}
+sapply(teste, class)
+```
+
+Corrige o Tipo da coluna:
+```{r}
+data_frame_mod <- transform(
+  teste, Fev31N = as.numeric(as.character(Fev31N)))
+```
+```{r}
+teste <- transform(
+  data_frame_mod, FevNaturalN  = as.numeric(as.character(FevNaturalN)))
+```
+
+Faz o teste:
+```{r}
+t.test(teste$Fev31N,
+       teste$FevNaturalN)
+```
+
+```{r}
+ks.test(teste$Fev31N,
+       teste$FevNaturalN)
+```

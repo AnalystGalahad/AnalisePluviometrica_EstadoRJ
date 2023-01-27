@@ -1,0 +1,24 @@
+```{r}
+tgeral <- read.csv2(file="D:\\Estudo\\Oficina de Pesquisa\\totalr.xls", sep=',')
+tgeral
+```
+identifica o tipo da coluna:
+```{r}
+sapply(tgeral, class)
+```
+Corrige o Tipo da coluna:
+```{r}
+data_frame_mod <- transform(
+  tgeral, Grajau.jacarepagua.Fev31 = as.numeric(as.character(Grajau.jacarepagua.Fev31)))
+```
+```{r}
+tgeral <- transform(
+  data_frame_mod, Grajau.jacarepagua.Fev = as.numeric(as.character(Grajau.jacarepagua.Fev)))
+```
+
+Faz o teste:
+```{r}
+ks.test(tgeral$Grajau.jacarepagua.Fev31,
+       tgeral$Grajau.jacarepagua.Fev)
+```
+
