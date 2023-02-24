@@ -1,0 +1,69 @@
+Entradas:
+```{r}
+diretorio <- readline("Insira o diretório onde está o arquivo:\n")
+arquivo <- readline("Insira o nome do arquivo:\n")
+```
+
+
+Importando o DataFrame:
+```{r}
+# setando o diretório:
+setwd(diretorio)
+
+# Criando path final:
+folder_path <- file.path(diretorio, arquivo)
+
+df <- read.csv(folder_path)
+df
+```
+
+
+Separando os DataFrames:
+```{r}
+# DataFrame das Estatisticas:
+df_estatistica <- df[seq(1, nrow(df), 2), ]
+
+# Salvar dataframe como um arquivo CSV
+write.csv(df_estatistica, "resultados_estatistica.csv", row.names = FALSE)
+
+# DataFrame:
+df_estatistica
+```
+# Uma explicação sobre a "Estatistica de Teste":
+A estatística de teste é um valor numérico calculado a partir dos dados observados em um experimento ou estudo estatístico, que é usado para avaliar a evidência contra uma hipótese nula. Ela é uma medida da diferença observada entre os dados e os valores esperados sob a hipótese nula, e é usada para decidir se a hipótese nula deve ser rejeitada ou não. Em outras palavras, é uma medida da força da evidência contra a hipótese nula.
+
+Por exemplo, no caso de um teste t, a estatística de teste é calculada como a diferença entre as médias amostrais dividida pelo erro padrão da diferença entre as médias. Se a estatística de teste for grande, isso sugere que a diferença observada entre as médias amostrais é improvável devido ao acaso e pode indicar que a hipótese nula deve ser rejeitada.
+
+A relevância da estatística de teste está no fato de que ela fornece uma maneira objetiva de avaliar a força da evidência contra uma hipótese nula. Ela permite que os pesquisadores façam inferências estatísticas e tomem decisões com base em dados observados, em vez de simplesmente confiar em suposições ou conjecturas. A estatística de teste é amplamente utilizada em muitos campos da ciência, incluindo a medicina, psicologia, biologia e economia.
+
+```{r}
+# df P-value:
+df_pValue <- df[seq(2, nrow(df), 2), ]
+
+# Salvar dataframe como um arquivo CSV
+write.csv(df_pValue, "resultados_pvalue.csv", row.names = FALSE)
+
+# DataFrame:
+df_pValue
+```
+
+# Uma explicação sobre o "p-value":
+O valor p (ou p-value, em inglês) é um resultado numérico obtido em um teste de hipótese estatística que indica a probabilidade de se obter um resultado igual ou mais extremo do que o observado, assumindo que a hipótese nula é verdadeira. Em outras palavras, o valor p é uma medida da evidência contra a hipótese nula.
+
+Se o valor p é pequeno (geralmente menor que 0,05 ou 0,01), isso indica que a evidência contra a hipótese nula é forte e que a hipótese alternativa é provavelmente verdadeira. Por outro lado, se o valor p é grande, isso indica que a evidência contra a hipótese nula é fraca e que a hipótese alternativa não é suportada pelos dados.
+
+O valor p é uma medida importante em testes de hipóteses porque ajuda a avaliar a força da evidência estatística contra a hipótese nula. Ele é amplamente utilizado em muitas áreas da ciência para tomar decisões baseadas em dados e para avaliar a significância estatística de resultados experimentais.
+
+# Conclusão da comparação entre a "Estatistica de Teste e o p-value":
+Ou seja, sendo a "estatística de teste" o número que mede a diferença entre os valores observados e os valores esperados sob a hipótese nula e o "p-value" a probabilidade de obter uma estatística de teste tão extrema (ou mais extremo) que a observada, vemos que ambas estão relacionadas, Ambos os valores fornecem informações importantes sobre a significância estatística de um resultado e devem ser considerados juntos para tomar decisões estatísticas adequadas.
+
+```{r}
+# Apagando o Arquivo:
+if (file.exists(folder_path)){
+  file.remove(folder_path)
+  print("Pasta Removida com sucesso:")
+} else
+  print("Arquivo não encontrado")
+```
+Note:
+  Assim como no C, quando a estrutura de condicionalidade possui apenas uma linha, as chaves "{}" são opcionais. Elas só se fazem necessárias quando a estrutura de condicionalidade possui mais de duas linhas.
